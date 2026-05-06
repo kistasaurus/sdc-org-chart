@@ -1,0 +1,40 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: SDC Org Chart
+description: The initial container for the SDC Org Chart component.  If Drupal decides to allow us to add conditional logic for if an item is nested or not, this can probably be removed and added into the item component.
+group: SDC Org Chart
+status: experimental
+
+props:
+  type: object
+  required:
+      - style
+  properties:
+    style:
+      type: string
+      title: Style
+      enum:
+        - light
+        - dark
+      meta:enum:
+        light: Light
+        dark: Dark
+      examples:
+        - light
+    bg_color:
+      type: string
+      title: Custom Background Color
+      description: Override background color for all items in this organization chart. This should be a hex code, but can also be a color name or other valid CSS color value. Optional.
+    text_color:
+      type: string
+      title: Custom Text Color
+      description: Override text color for all items in this organization chart. This should be a hex code, but can also be a color name or other valid CSS color value. Optional.
+    line_color:
+      type: string
+      title: Custom Line Color
+      description: Override line color for all items in this organization chart. This should be a hex code, but can also be a color name or other valid CSS color value. Optional.
+slots:
+  sdc_chart_items:
+    title: Chart Item(s)
+    description: A spot to place chart items. This slot can be used multiple times to create multiple items in the chart.
+    expected:
+      - sdc_org_chart:sdc_org_item

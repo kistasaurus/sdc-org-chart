@@ -1,0 +1,9 @@
+name: 'SDC Org Chart'
+type: module
+description: 'An organization chart created with SDCs.'
+package: Custom
+core_version_requirement: ^10 || ^11
+lifecycle: experimental
+
+dependencies:
+  - drupal:cva

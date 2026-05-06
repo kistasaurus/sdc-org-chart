@@ -1,0 +1,41 @@
+{% set item_classes = [
+	'sdc-org-chart--group-item',
+	sdc_chart_children | render ? 'sdc-org-chart--has-children' : '',
+] %}
+
+{% set content_class = [
+	'sdc-org-chart--content-var--' ~ (variant ? variant : 'primary'),
+	'sdc-org-chart--content'
+] %}
+
+<li class="{{ item_classes | join(' ') }}">
+	<div class="sdc-org-chart--content-wrapper">
+		<div class="{{ content_class | join(' ') }}"{% if bg_color %} style="--sdc-org--bkg: {{ bg_color }};"{% endif %}>
+			{% if sdc_chart_item_media | render %}
+				<div class="sdc-org-chart--media">
+					{{ sdc_chart_item_media }}
+				</div>
+			{% endif %}
+			<div class="sdc-org-chart--heading">
+				{% if url %}
+					<span class="sdc-org-chart--title">
+						<a href="{{ url }}">{{ heading }}</a>
+					</span>
+				{% else %}
+					<span class="sdc-org-chart--title">{{ heading }}</span>
+				{% endif %}
+				{% if sub_title %}
+					<span class="sdc-org-chart--subtitle">{{ sub_title }}</span>
+				{% endif %}
+			</div>
+			{% if sdc_chart_item_extra | render %}
+				<div class="sdc-org-chart--extra">
+					{{ sdc_chart_item_extra }}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+	{% if sdc_chart_children | render %}
+		<ul class="sdc-org-chart--group sdc-org-chart--group-children">{{ sdc_chart_children }}</ul>
+	{% endif %}
+</li>

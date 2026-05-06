@@ -1,0 +1,15 @@
+{% set group_classes = [
+  'sdc-org-chart--group',
+  'sdc-org-chart--group-root',
+  style == 'dark' ? 'sdc-org-chart--dark' : '',
+] %}
+
+{% set group_styles = [
+  bg_color ? '--sdc-org--bkg: ' ~ bg_color ~ ';' : '',
+  text_color ? '--sdc-org--text: ' ~ text_color ~ ';' : '',
+  line_color ? '--sdc-org--line: ' ~ line_color ~ ';' : '',
+] %}
+
+<ul class="{{ group_classes | join(' ') }}"{% if bg_color or text_color or line_color %} style="{{ group_styles | join(' ') }}"{% endif %}>
+  {{ sdc_chart_items }}
+</ul>

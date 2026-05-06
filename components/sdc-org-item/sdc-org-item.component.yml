@@ -1,0 +1,53 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: SDC Org Chart Item
+description: A single item for the SDC Org Chart component.
+group: SDC Org Chart
+status: experimental
+
+props:
+  type: object
+  required:
+    - heading
+    - variant
+  properties:
+    variant:
+      type: string
+      title: Style
+      enum:
+        - primary
+        - secondary
+      meta:enum:
+        primary: Primary
+        secondary: Secondary
+      examples:
+        - primary
+    bg_color:
+      type: string
+      title: Custom Background Color
+      description: Override background color for this item in the organization chart. This should be a hex code, but can also be a color name or other valid CSS color value. Optional.
+    heading:
+      type: string
+      title: Item Heading
+      description: The heading for this item in the organization chart. This is usually someones name, but it could be a department or other organizational unit.
+      examples:
+        - "Chart Item Heading"
+    url:
+      type: string
+      title: URL
+      description: The URL for this item in the organization chart. Optional.
+    sub_title:
+      type: string
+      title: Sub Title
+      description: The sub title for this item in the organization chart. This could be a job title or other descriptive text. Optional.
+slots:
+  sdc_chart_item_media:
+    title: Chart Media
+    description: Media content for the organization chart item. This slot can be used to display an image or icon associated with the item. Optional.
+  sdc_chart_item_extra:
+    title: Chart Extra Content
+    description: Additional content for the organization chart item. This slot can be used to display additional information about the item, such as contact information or other details. Optional.
+  sdc_chart_children:
+    title: Chart Children
+    description: A child item in the organization chart. This slot can be used multiple times to create multiple items in the chart.
+    expected:
+      - sdc_org_chart:sdc_org_item

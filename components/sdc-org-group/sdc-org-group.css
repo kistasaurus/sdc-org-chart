@@ -1,0 +1,11 @@
+/* Layout */
+.sdc-org-chart--group-root {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--sdc-org-spacing);
+}
+
+.sdc-org-chart--group {
+  padding: 0;
+}
